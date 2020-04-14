@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>建工·璟宸晴天</title>
+	<!--target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<style>
+		*{margin: 0; padding: 0}
+		html { height:100%; }
+		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
+
+		.menu ul {
+		    list-style-type: none;
+		    overflow: hidden;
+		    background-image: #202530;/*#333*/
+		    bottom: 0;
+		    width: 100%;
+			display:flex;
+			flex-direction:row;
+		}
+
+		.menu ul li {
+		    float: left;
+			/*border-right: 1px solid #bbb;*/
+			flex:1;
+		}
+			
+		.menu ul li:last-child {
+		    border-right: none;
+		}
+
+		ul li a {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding-top: 4px;
+		    text-decoration: none;
+			background-image: url(img/Button_Background.png);
+			background-size: 100% 100%;
+			background-color: #000;
+		}
+		
+		ul li #active {
+			background-image: url(img/Button_Background_Pressed.png);
+		}
+
+		/*ul li a:hover:not(.active) {
+		    background-color: #30456C; #111
+		}*/
+
+		ul li a img {
+		    width: 40px;
+		    height: 40px;
+		}
+
+		.menustyle ul{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			height: 100%;
+			top:0px;
+			position: fixed;
+		}
+
+		.menustyle ul li{
+			background-color: #333;
+			float: top;
+		}
+
+		#activestyle {
+		    background-color: #C8C6BA;/*#366331*/
+		    color: #202530;
+		}
+
+		.bg{
+		    position: fixed;
+			width: 100%;
+			height:100%;
+			background: #333;
+			opacity: 0.75;
+		    left: 0;
+		    top: 0;
+		}
+		.box{
+		    width: 300px;
+		    height: 250px;
+		    position: fixed;
+		    left:50%;
+		    top:50%;
+		    margin: -150px;
+		    background-image: url(img/Window.png);
+			background-size: 100% 100%;
+		    text-align: center;
+		    overflow: hidden;
+	    }
+	    .box div{
+	    	height: 210px;
+	    	padding: 10px 20px;
+	    }
+	    .box h2{
+	    	padding-bottom: 5px;
+	    	margin-bottom: 5px;
+	    	line-height: 2;
+	    	border-bottom: 1px solid #fff;
+	    }
+	    .box p{
+	    	color: #fff;
+	    }
+	    .btn{
+	    	left: 10%;
+	    	width: 80%;
+	    	display: block;
+	    	line-height: 2;
+	    	position: absolute;
+	    	bottom: 30px;
+	    	background-image: url(img/Button.png);
+	    	background-size: 100% 100%;
+	    	font-size: 18px;
+	    }
+	    .brand{
+	    	position: fixed;
+	    	width: 100%;
+	    	height: 100%;
+			background: #000;
+		    left: 0;
+		    top: 0;
+		    text-align: center;
+		    display: none;
+	    }
+
+	    #bgmusicbtn{
+	    	width: 30px;
+	    	height: 30px;
+	    }
+
+	    .playing{
+	    	animation: rotateit 2s linear infinite;
+	    }
+
+	    @-webkit-keyframes rotateit{
+		    to{transform:rotate(1turn);}
+		}
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">var currentSandbox="1"; var currentStyle="Noon"</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
+
+<script src="tour.js"></script>
+
+<script type="text/javascript">
+;var encode_version = 'sojson.v5', pviiy = '__0x79e3a',  __0x79e3a=['wq0xwpx9a3k=','w5UDwqfCgcOp','w4zDngAvAMKJQMOeHcKnN8OYFsOA','wrkNEcK3wog9','wrgowp1rYA==','WcKoTzh4JcOdw7rDmwM+YS04','LcO3w7rDpMKkw7nCmw==','L8OVLV0=','EsOLw68nRcKQQRzCrnQ=','JMKveEjCiA4oCsKD','QWltNxw7w7Y+Bg==','WSPDoUtc','5LqV6IKJ5Yur6Zquw64hw7kTM0DCqS7ChQ==','w6jDmD3DrCPDsA==','M8KmcVjCnQ4l','w6lIw4pcwqoZwoXDgMOqwqvDsVcZw4U=','XMOAwrzDsEg=','IcKtfVQ=','UcKywo7Dk8Kgwo1QFcOnHMOwwrNdaRbDgw==','W8Opw4DDi8OqPWEwED7DhMKOHHvClcKxw5fCgCc=','FcOiw6vDhDQdwqE=','V8KWwo4Zw5U=','YMK5wrsU','OzoI','csKnczBN','XyrDsHxEak/Do8KjZEfDk8OWbA==','EsO/wpY0w58=','wqkVMcKs','w4PDvQDDjBQ=','PsOVC0rDpQ==','MsK5LGZm','w7QbwqrCrsOtL8O9D3Q=','w6HCn15SWg==','wqrDkQbDosKFPSZmwp3CgcOJHsO7Gw==','w6waw6/CkcKTICQ=','wr3DmBPDng==','AsKqw5rDqsOlwpQPHcKf','TU9uwpUB','esOVw7YZDA==','w6PCs29fUg==','wrUkacO3w5k=','VMKkwrUmw6A=','QTxzKMK1','w7h4F1nCtcOEwpvDucO3w63Drgs7SU0JJk/Dnw==','w6BMw5N8','dsOmw64=','5o6t5Luy5aS+6Ler77yN6K6+56in5ZOV5Yel6Ky044Gn','OMOYwokVw73ClxvCncOTLzE=','JMKJKF/CgDYwJsKqw4HDvRIZcMOSwoU2wqbChMOIEsKnRlTDmTpVKsOjwpbCjkNo','V8Opw4fCtXjDiwVawq3CvsKWVcOCwrs7LsKrwoLDh8ObwqYmZgLCjEVvY1kIfMOuCUbDgcOV','R8OCw7t4Iw==','Cw8lw6PDpQ==','dB3DrFN/','d8OWNXE=','NMKJwq3Dsg==','FMOqw6jDhSYXwrY=','ayJyBg==','w4dRK3/CnxnCvMOpCX/Ch8OUw48=','5o285LiT5oiY5Ymg77yS5oad6LGw5oOX55mE5paK5oyR772Z','YMKhwqoew4E=','5oyZ5LuI5om05Ymb77+h5oWG6LGL5oGN55i95pWU5oyx776M','J8KEwrzDmRrDicOLUQZYw4TCpU/ChA==','IjUQw4bDtA==','IMKhEmRX','wqnCpGBvNGQmdlwWSsOtw6EP','w6B2PUTChA==','djllD8KX','JMKIwrvDrBrDjcOf','w6J6w4hSwos=','wqbDq8OnesOJ','a8Opw53DtsOvNkYGPDjDr8KTMno=','VsKJBMKcb8Kew64=','QXJ+KBY=','wpU8dcOMw7Itwpw=','WcOTw6FPIQ==','w6Y7ZMOYw7g=','wrLDtsOkecODwptQ','ZcOyw6w7NQ==','fsOow5fCtGQ=','b8Ojw4fDh8OiMF8=','AMOJZh01','w4BXNnvCkhvCsQ==','w6DCsFpTdQ==','w4Uvw6HDtAXCgg==','BMK0Hw==','esKBD8KQWA==','M8ODI0DDuw==','Bxt6woZU','w4clw6HDtg==','wo/DqsOnZUg=','w7TDkyU=','wpYwcsO5w7IpwojDkcKVwpPCrxI0w4Q=','wrfDhCfDjcKw','YMOLw7ME','L0l/wrvDvcOGw43CncKqwojDkTFow5LCrkM2wpzDuFvCiybDrsK5'];(function(_0x375d92,_0xe8cf3b){var _0x46ae65=function(_0x54bcab){while(--_0x54bcab){_0x375d92['push'](_0x375d92['shift']());}};_0x46ae65(++_0xe8cf3b);}(__0x79e3a,0x12a));var _0xa087=function(_0x58472a,_0x2299d5){_0x58472a=_0x58472a-0x0;var _0xf96859=__0x79e3a[_0x58472a];if(_0xa087['initialized']===undefined){(function(){var _0x482ce7=typeof window!=='undefined'?window:typeof process==='object'&&typeof require==='function'&&typeof global==='object'?global:this;var _0x51b0e1='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x482ce7['atob']||(_0x482ce7['atob']=function(_0x50008a){var _0x34e93f=String(_0x50008a)['replace'](/=+$/,'');for(var _0x4155e7=0x0,_0x38a901,_0x55870c,_0x1d80e8=0x0,_0x5c2568='';_0x55870c=_0x34e93f['charAt'](_0x1d80e8++);~_0x55870c&&(_0x38a901=_0x4155e7%0x4?_0x38a901*0x40+_0x55870c:_0x55870c,_0x4155e7++%0x4)?_0x5c2568+=String['fromCharCode'](0xff&_0x38a901>>(-0x2*_0x4155e7&0x6)):0x0){_0x55870c=_0x51b0e1['indexOf'](_0x55870c);}return _0x5c2568;});}());var _0x573502=function(_0x51a63c,_0x5bc29d){var _0x3d246c=[],_0x5840b8=0x0,_0x23bf42,_0x3f4d45='',_0x3000a5='';_0x51a63c=atob(_0x51a63c);for(var _0x337ef5=0x0,_0xedbb72=_0x51a63c['length'];_0x337ef5<_0xedbb72;_0x337ef5++){_0x3000a5+='%'+('00'+_0x51a63c['charCodeAt'](_0x337ef5)['toString'](0x10))['slice'](-0x2);}_0x51a63c=decodeURIComponent(_0x3000a5);for(var _0x5a0007=0x0;_0x5a0007<0x100;_0x5a0007++){_0x3d246c[_0x5a0007]=_0x5a0007;}for(_0x5a0007=0x0;_0x5a0007<0x100;_0x5a0007++){_0x5840b8=(_0x5840b8+_0x3d246c[_0x5a0007]+_0x5bc29d['charCodeAt'](_0x5a0007%_0x5bc29d['length']))%0x100;_0x23bf42=_0x3d246c[_0x5a0007];_0x3d246c[_0x5a0007]=_0x3d246c[_0x5840b8];_0x3d246c[_0x5840b8]=_0x23bf42;}_0x5a0007=0x0;_0x5840b8=0x0;for(var _0x31d6e7=0x0;_0x31d6e7<_0x51a63c['length'];_0x31d6e7++){_0x5a0007=(_0x5a0007+0x1)%0x100;_0x5840b8=(_0x5840b8+_0x3d246c[_0x5a0007])%0x100;_0x23bf42=_0x3d246c[_0x5a0007];_0x3d246c[_0x5a0007]=_0x3d246c[_0x5840b8];_0x3d246c[_0x5840b8]=_0x23bf42;_0x3f4d45+=String['fromCharCode'](_0x51a63c['charCodeAt'](_0x31d6e7)^_0x3d246c[(_0x3d246c[_0x5a0007]+_0x3d246c[_0x5840b8])%0x100]);}return _0x3f4d45;};_0xa087['rc4']=_0x573502;_0xa087['data']={};_0xa087['initialized']=!![];}var _0x37b6ae=_0xa087['data'][_0x58472a];if(_0x37b6ae===undefined){if(_0xa087['once']===undefined){_0xa087['once']=!![];}_0xf96859=_0xa087['rc4'](_0xf96859,_0x2299d5);_0xa087['data'][_0x58472a]=_0xf96859;}else{_0xf96859=_0x37b6ae;}return _0xf96859;};window[_0xa087('0x0','%k8O')]=function(){var _0x34a5a3={'jqlDY':_0xa087('0x1','YHvF')};var _0x5dae56=document[_0xa087('0x2','NxQz')](_0x34a5a3[_0xa087('0x3','eA@D')]);_0x5dae56[_0xa087('0x4','YHvF')]();};document[_0xa087('0x5','sx55')](_0xa087('0x6','6enZ'),function(){var _0xd68afa={'GCTtr':_0xa087('0x7','%96B')};var _0xa5391d=document['getElementById'](_0xd68afa[_0xa087('0x8','bs$R')]);_0xa5391d[_0xa087('0x9','bs$R')]();},![]);function LoadPano(_0x5f1fcd,_0x4fc544){var _0x37e40c={'LjHMY':_0xa087('0xa','NCaY'),'ZOpOG':'krpanoSWFObject','EOaNO':function _0x20b585(_0x363b81,_0x1cccec){return _0x363b81+_0x1cccec;},'DKQOV':function _0x1674f7(_0x3ede66,_0x471827){return _0x3ede66+_0x471827;},'alGnT':function _0xcbaf69(_0x167734,_0x2c6d2c){return _0x167734+_0x2c6d2c;},'WBuna':',\x20MERGE|IGNOREKEEP,\x20BLEND(1));'};if(_0x5f1fcd){if(_0x37e40c[_0xa087('0xb','qH)%')]===_0x37e40c[_0xa087('0xb','qH)%')]){var _0x29eff4=document[_0xa087('0xc','5ENU')](_0x37e40c[_0xa087('0xd','WSOL')]);_0x29eff4[_0xa087('0xe','@XKW')](_0x37e40c['EOaNO'](_0x37e40c[_0xa087('0xf','%k8O')](_0x37e40c[_0xa087('0x10','M(ZA')](_0x37e40c[_0xa087('0x11','u7ur')](_0xa087('0x12','khW)'),_0x5f1fcd),'.xml,\x20startscene='),_0x4fc544),_0x37e40c[_0xa087('0x13','oV@F')]));}else{var _0xd82ce1=document[_0xa087('0x14','B$0l')](_0xa087('0x15','@Mo2'));_0xd82ce1[_0xa087('0x16','B$0l')]();}}};function ChangeLayout(_0x3d61e8,_0x25c5b2){var _0xf4fd1={'PQiYa':_0xa087('0x17','sx55'),'UnDci':'active','DqoKG':function _0x3696b3(_0x516520,_0xe70161){return _0x516520+_0xe70161;}};var _0x36e9b0=_0xf4fd1[_0xa087('0x18',')E%j')][_0xa087('0x19','@koB')]('|'),_0x418f63=0x0;while(!![]){switch(_0x36e9b0[_0x418f63++]){case'0':if(active)active['id']='';continue;case'1':currentSandbox=_0x3d61e8;continue;case'2':active=document['getElementById'](_0xf4fd1[_0xa087('0x1a','oV@F')]);continue;case'3':_0x25c5b2['id']='active';continue;case'4':LoadPano(_0xf4fd1[_0xa087('0x1b','8NTm')](_0xf4fd1[_0xa087('0x1c','bs$R')](_0xf4fd1[_0xa087('0x1d','w[h6')]('Sandbox_',currentSandbox),'_'),currentStyle),null);continue;}break;}}function Submit(){var _0x3d92dc={'ZYbxx':_0xa087('0x1e','3NFY'),'LRhjW':_0xa087('0x1f','NxQz'),'NIbtJ':function _0x28127c(_0x528aff,_0xdfdc42){return _0x528aff<_0xdfdc42;},'ZEOBn':function _0x4093a4(_0xb7c454,_0xa8b7c3){return _0xb7c454!==_0xa8b7c3;},'YyiGB':_0xa087('0x20','CbmI'),'IbKnq':function _0x2764e1(_0x5e405b,_0x33a43e){return _0x5e405b(_0x33a43e);},'lzodJ':function _0x5e4ae9(_0x3afbcf,_0x4a6660){return _0x3afbcf(_0x4a6660);},'OgexV':'请输入正确的信息','zMuHU':_0xa087('0x21','LMRr'),'zpUjY':_0xa087('0x22','WSOL'),'BzLna':_0xa087('0x23','YHvF'),'LZLMo':_0xa087('0x24','XS#F'),'MwlKt':'Contact'};var _0x4dd138=_0x3d92dc[_0xa087('0x25','mbIm')][_0xa087('0x26','NCaY')]('|'),_0xa00798=0x0;while(!![]){switch(_0x4dd138[_0xa00798++]){case'0':_0x352de4['set'](_0x3d92dc[_0xa087('0x27','5ENU')],_0x2e2710);continue;case'1':var _0x352de4=new _0x424c96();continue;case'2':_0x352de4[_0xa087('0x28','IMTR')]()[_0xa087('0x29','c]sE')](function(_0x485c1a){var _0x4c95c2={'cANBH':'YPu','ptpsf':function _0x386eac(_0x1581ef,_0x2ae3c6){return _0x1581ef(_0x2ae3c6);},'ZJYLe':_0xa087('0x2a','%96B'),'lWvKM':_0xa087('0x2b','w[h6'),'DHxOz':_0xa087('0x2c','!)Kb'),'NdoEj':_0xa087('0x2d','bvDC')};if(_0x4c95c2['cANBH']!=='YPu'){_0x4c95c2[_0xa087('0x2e','bs$R')](alert,_0xa087('0x2f','HiT%'));document[_0xa087('0x30','c]sE')](_0x4c95c2[_0xa087('0x31','NCaY')])[_0xa087('0x32','u7ur')]['display']=_0x4c95c2['lWvKM'];document[_0xa087('0x33','@XR[')](_0x4c95c2[_0xa087('0x34','!)Kb')])[_0xa087('0x35','w[h6')][_0xa087('0x36','c]sE')]=_0x4c95c2[_0xa087('0x37','NxQz')];}else{_0x4c95c2[_0xa087('0x38','mP@]')](alert,_0x4c95c2['NdoEj']);document[_0xa087('0x39','6enZ')](_0xa087('0x3a','k[vQ'))[_0xa087('0x3b',')6PA')][_0xa087('0x3c','8NTm')]='none';document[_0xa087('0x33','@XR[')](_0x4c95c2[_0xa087('0x3d','mbIm')])[_0xa087('0x3e','WtvJ')][_0xa087('0x3f','mP@]')]=_0x4c95c2[_0xa087('0x40','@koB')];}},function(_0x11d31b){_0x3dfbcd[_0xa087('0x41','XS#F')](alert,_0x3dfbcd['Esizp']);document['getElementById'](_0xa087('0x42','6enZ'))[_0xa087('0x43','jmgm')][_0xa087('0x44','!)Kb')]=_0x3dfbcd[_0xa087('0x45','oV@F')];});continue;case'3':if(_0x2e2710['length']<0x2||_0x3d92dc['NIbtJ'](_0x306eaa[_0xa087('0x46','tR$i')],0x8)){if(_0x3d92dc['ZEOBn'](_0xa087('0x47','u7ur'),_0x3d92dc['YyiGB'])){_0x3d92dc['IbKnq'](alert,'请输入正确的信息');return;}else{_0x3d92dc['lzodJ'](alert,_0x3d92dc[_0xa087('0x48','k[vQ')]);return;}}continue;case'4':var _0x3dfbcd={'Audqo':function _0x1c2c95(_0x1a68bc,_0x72f1c1){return _0x3d92dc[_0xa087('0x49','M(ZA')](_0x1a68bc,_0x72f1c1);},'Esizp':_0x3d92dc[_0xa087('0x4a','LMRr')],'VmqoN':_0xa087('0x4b','tR$i')};continue;case'5':var _0x2e2710=document['getElementById'](_0x3d92dc[_0xa087('0x4c','JuIX')])['value'];continue;case'6':_0x352de4[_0xa087('0x4d','%k8O')]('phoneNumber',_0x306eaa);continue;case'7':var _0x306eaa=document[_0xa087('0x4e','8NTm')](_0x3d92dc[_0xa087('0x4f','B$0l')])['value'];continue;case'8':AV[_0xa087('0x50','@koB')]({'appId':_0x3d92dc['BzLna'],'appKey':_0xa087('0x51','NCaY'),'serverURL':_0x3d92dc['LZLMo']});continue;case'9':var _0x424c96=AV['Object'][_0xa087('0x52','PEGI')](_0x3d92dc[_0xa087('0x53','khW)')]);continue;}break;}}function ToggleMusic(){var _0x2dc07b=document[_0xa087('0x54','8rWO')]('bgmusic');if(!_0x2dc07b[_0xa087('0x55','HiT%')]){_0x2dc07b[_0xa087('0x56','PEGI')]();document[_0xa087('0x57','qH)%')]('bgmusicbtn')['classList']['remove'](_0xa087('0x58','Ke2A'));}else{_0x2dc07b[_0xa087('0x59','M(ZA')]();document['getElementById'](_0xa087('0x5a','uqG*'))['classList']['add']('playing');}};if(!(typeof encode_version!==_0xa087('0x5b','YHvF')&&encode_version===_0xa087('0x5c',')6PA'))){window[_0xa087('0x5d','5ENU')](_0xa087('0x5e','khW)'));};encode_version = 'sojson.v5';
+</script>
+
+<div style="display: flex; flex-direction: column; width: 100%; height: 100%;">
+	<div id="pano" style="flex: 1;">
+		<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
+		<script>
+			embedpano({swf:"tour.swf", xml:"Sandbox_index.xml", target:"pano", html5:"auto", mobilescale:0.5, passQueryParameters:true});
+		</script>
+	</div>
+
+	<div id="menu" class="menu">
+		<ul>
+			<li>
+				<a onclick="ChangeLayout('1', this);">
+					<img src="img/Button_Icon_Brand.png" />
+				</a>
+			</li>
+			<li>
+				<a onclick="ChangeLayout('2', this);">
+					<img src="img/Button_Icon_Sandbox.png" />
+				</a>
+			</li>
+			<li>
+				<a onclick="ChangeLayout('3', this);">
+					<img src="img/Button_Icon_Roam.png" /></a></li>
+			<li>
+				<a onclick="ChangeLayout('4', this);">
+					<img src="img/Button_Icon_Layout.png" />
+				</a>
+			</li>
+			<li>
+				<a onclick="ChangeLayout('5', this);">
+					<img src="img/Button_Icon_Area.png" />
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div style="display: block; position: fixed; right: 10px; top: 10px;">
+	<audio id="bgmusic" autoplay loop src="sounds/bgmusic.mp3"></audio>
+	<a onclick="ToggleMusic();">
+		<image id="bgmusicbtn" class="playing" src="img/Button_Icon_Music.png" />
+	</a>
+</div>
+
+<div id="contactbutton" style="display: block; position: fixed; right: 10px; top: 25%;">
+	<a onclick="document.getElementById('contact').style.display = 'block';">
+		<image src="img/Button_Icon_Contact.png" style="width: 30px; height: 30px;"/>
+	</a>
+</div>
+
+<div id = "contact" class="contact" style="display: none;">
+	<div class="bg"></div>
+	<div class="box">
+		<div>
+			<h2>最新资讯</h2>
+			<input type="text" id="name" placeholder="姓名" maxlength=4 style="margin: 10px 0px; padding: 5px; border-radius: 10px; text-align: left; font-size: 16px; width: 240px; ">
+			<input type="text" id="phonenumber" placeholder="手机号" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength=11 style="padding: 5px; border-radius: 10px; text-align: left; font-size: 16px; width: 240px">
+			<p>注册登录及时了解楼盘最新资讯。</p>
+		</div>
+		<a class="btn" onclick="Submit()">提交</a>
+	</div>
+</div>
+
+<!--侧边菜单
+<div class="menustyle">
+	<ul>
+		<li><a id="activestyle" style="font-size: 12px; padding: 7px 10px;" onclick="ChangeStyle('Noon', this);">中<br>午</a></li>
+		<li><a style="font-size: 12px; padding: 7px 10px;" onclick="ChangeStyle('Night', this);">晚<br>上</a></li>
+	</ul>
+</div>-->
+
+<div id = "hint" class="hint" style="display: none;">
+	<div class="bg"></div>
+	<div class="box">
+		<div>
+			<h2>温馨提示</h2>
+			<p>本项目资料及效果展示仅供参考，不构成任何销售建议。展示中所引用信息均来自市场公开资料，我公司对所引用信息保留最终解释权。</p>
+		</div>
+		<a class="btn" onclick="document.getElementById('hint').style.display = 'none'">知道了</a>
+	</div>
+</div>
+
+
+
+</body>
+</html>
